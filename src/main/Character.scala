@@ -7,28 +7,37 @@ class Character {
   var magic_defense: Int = 0
   var maxHP: Int = 10
   var currentHP :Int = maxHP
-  var magicHP: Int = 10
-  var currentMP: Int = magicHP
+  var maxMP: Int = 10
+  var currentMP: Int = maxMP
 
   def takeDamage(x:Int): Boolean ={
-    var DOA: Boolean  = true
-    currentHP = currentHP -x
+//    var alive: Boolean  = true
+    currentHP = currentHP - x
     if(currentHP <= 0){
-      false
+       false
     }
-    true
+    else{ true}
   }
-  def dealPhysicalAttack(C1: Character) ={
-    val damageThatGotPast= this.attack_power- C1.defense
+  def dealPhysicalAttack(C1: Character): Boolean ={
+    val damageThatGotPast = this.attack_power - C1.defense
     C1.takeDamage(damageThatGotPast)
 
   }
+  def takeMagicDamage(x: Int): Boolean = {
+    currentMP = currentMP - x
+    if(currentMP <= 0){
+      false
+    }
+    else{true}
+  }
   def dealMagicAttack(C2: Character)={
-    var damageMA = this.magic_attack - C2.magic_defense
-    C2.takeDamage(damageMA)
-    this.currentMP-5
-    if(this.currentMP <=0){
-      C2.takeDamage(0)
+    val damageMA = this.magic_attack - C2.magic_defense
+    this.currentMP = this.currentMP - 5
+    if(this.currentMP > 0){
+      C2.takeMagicDamage(damageMA)
+    }
+    else if(this.currentMP <=0){
+      C2.takeMagicDamage(0)
     }
   }
 
