@@ -49,7 +49,7 @@ class DamageTest extends FunSuite {
     var C2: Character = new Character
     C1.experience = 6
     C1.level = 1
-    C2.currentMP = 2
+    C2.maxMP = 2
     C1.gainExperience(C2)
     assert(C1.level == 1, "incorrect level increase")
 
@@ -70,8 +70,9 @@ class DamageTest extends FunSuite {
   test("multi level increase"){
     val C1: Character = new Character
     val C2: Character = new Character
+    val C3: Character = new Character
     C1.dealPhysicalAttack(C2)
-    C1.dealPhysicalAttack(C2)
+    C1.dealPhysicalAttack(C3)
     assert(C1.level == 3, "incorrect # levels")
   }
   test("party testing DOA"){

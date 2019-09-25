@@ -52,7 +52,7 @@ class Character {
 //    val physicalDamageThatGotPast = this.attack_power - C3.defense
 //    val magicDamageThatGotPast = this.magic_attack - C3.magic_defense
 //    if(C3.takeDamage(physicalDamageThatGotPast)==false || C3.takeMagicDamage(magicDamageThatGotPast)==false){
-      this.experience = this.experience+(2*C3.currentMP)
+      this.experience = this.experience+(2*C3.maxMP)
 //    }
     if(this.experience>=20){
       var n = (this.experience/20).floor.toInt
