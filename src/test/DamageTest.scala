@@ -91,7 +91,7 @@ class DamageTest extends FunSuite {
     assert(P1.aliveWinnerChars == 2, "wrong DOA count")
 
   }
-  test("party experience increment test"){
+  test("party experience increment test (if total experience is odd, some winners dead)"){
     var C1: Character = new Character
     var C2: Character = new Character
     var C3: Character = new Character
@@ -110,5 +110,29 @@ class DamageTest extends FunSuite {
     assert(P1.eachCharExpIncrease == 5, "incorrect calculations")
     assert(C1.experience == 5, "Winner increment wrong C1")
     assert(C2.experience == 5, "Winner increment wrong C2")
+  }
+  test("party experience increment test (if total experience even, all winners alive)"){
+    var C1: Character = new Character
+    var C2: Character = new Character
+    var C3: Character = new Character
+    var C4: Character = new Character
+    var C5: Character = new Character
+    var C6: Character = new Character
+    var C7: Character = new Character
+    var C8: Character = new Character
+    var L1: List[Character] = List(C1, C2, C3, C4)
+    var L2: List[Character] = List(C5, C6, C7, C8)
+    var P1:Party = new Party(L1)
+    var P2:Party = new Party(L2)
+    C5.experience = 2
+    C6.experience = 1
+    C7.experience = 7
+    C8.experience = 6
+    P1.gainPartyExp(P2)
+    assert(P1.eachCharExpIncrease == 4, "incorrect calculations")
+    assert(C1.experience == 4, "Winner increment wrong C1")
+    assert(C2.experience == 4, "Winner increment wrong C2")
+    assert(C3.experience == 4, "Winner increment wrong C3")
+    assert(C4.experience == 4, "Winner increment wrong C4")
   }
 }
