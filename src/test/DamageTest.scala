@@ -109,7 +109,8 @@ class DamageTest extends FunSuite {
     P1.gainPartyExp(P2)
     assert(P1.eachCharExpIncrease == 5, "incorrect calculations")
     assert(C1.experience == 5, "Winner increment wrong C1")
-    assert(C2.experience == 5, "Winner increment wrong C2")
+    assert(C2.experience == 0, "dead member gaining experience")
+    assert(C3.experience == 5, "Winner increment wrong C3")
   }
   test("party experience increment test (if total experience even, all winners alive)"){
     var C1: Character = new Character

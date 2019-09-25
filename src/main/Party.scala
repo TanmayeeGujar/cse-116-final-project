@@ -21,10 +21,12 @@ var aliveWinnerChars:Int = 0
 
 
     for (k <- this.teamParty){
+      if(k.DOA == true){
+
 
 
 //      var eachCharExpIncrease = expCounter/aliveWinnerChars
-      k.experience = k.experience + eachCharExpIncrease
+      k.experience = k.experience + eachCharExpIncrease}
 
     }
   }
