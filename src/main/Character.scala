@@ -1,6 +1,6 @@
 package main
 
-class Character {
+abstract class Character {
   var attack_power: Int = 8
   var defense: Int = 2
   var magic_attack: Int = 8
@@ -12,6 +12,7 @@ class Character {
   var experience: Int = 0
   var level:Int = 1
   var DOA: Boolean = true
+  var BattleOptions: List[String] = List()
 
   def takeDamage(x:Int): Boolean ={
 //    var alive: Boolean  = true
@@ -27,22 +28,28 @@ class Character {
   def dealPhysicalAttack(C1: Character) ={
     val damageThatGotPast = this.attack_power - C1.defense
     C1.takeDamage(damageThatGotPast)
-    this.gainExperience(C1)
+    if(C1.currentHP <=0){
+      this.gainExperience(C1)
+    }
 
   }
   def takeMagicDamage(x: Int): Boolean = {
     currentMP = currentMP - x
     if(currentMP <= 0){
+      currentMP = 0
+      DOA = false
       false
     }
-    else{true}
+    else{DOA = true
+    true}
   }
   def dealMagicAttack(C2: Character): AnyVal={
     val damageMA = this.magic_attack - C2.magic_defense
     this.currentMP = this.currentMP - 5
     if(this.currentMP > 0){
       C2.takeMagicDamage(damageMA)
-      this.gainExperience(C2)
+      if(C2.currentMP <= 0){
+      this.gainExperience(C2)}
     }
     else if(this.currentMP <=0){
       C2.takeMagicDamage(0)
@@ -68,6 +75,48 @@ class Character {
       }
 
     }
+  }
+
+  def heal() : Unit = {
+    this.currentHP = this.currentHP + 5
+    this.currentMP = this.currentMP + 2
+  }
+
+  def castSpell(C1: Character) : Unit = {
+    var SpellCount = 0
+    while(SpellCount !=2) {
+      C1.magic_attack = C1.magic_attack -2
+      SpellCount = SpellCount +1
+
+    }
+  }
+
+  def battleOptions() = {
+//    var battle1 : String = "Physical Attack"
+//    var battle2 : String = "Magic Attack"
+//    var battle3 : String = "Spell"
+//    var battle4 : String = "Heal"
+//    if(this.level < 3){
+//      BattleOptions = List(battle1, battle2)}
+//
+//    else if(this.level >=2 && this.level <4){
+//      BattleOptions = List(battle1, battle2, battle3)}
+//    else if(this.level >=4 && this.level <5){
+//      BattleOptions = List(battle1, battle2, battle3, battle4)}
+    BattleOptions
+  }
+
+  def takeAction(battle: String, C1: Character) = {
+//    var actionList = battleOptions()
+//    if(battle == actionList(0)){
+//      this.dealPhysicalAttack(C1)
+//    }
+//    if(battle == actionList(1)){
+//      this.dealMagicAttack(C1)
+//    }
+//    if(!actionList.contains(battle)){
+//      null
+//    }
   }
 
 
