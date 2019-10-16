@@ -33,15 +33,15 @@ class Character1 extends Character {
 
   }
 
-  override def takeMagicDamage(x: Int): Boolean = {
+  override def takeMagicDamage(x: Int): Unit = {
     currentMP = currentMP - x
     if(currentMP <= 0){
       currentMP = 0
-      DOA = false
-      false
+//      DOA = false
+//      false
     }
-    else{DOA = true
-      true}
+//    else{DOA = true
+//      true}
   }
 
   override def dealMagicAttack(C2: Character): AnyVal = {
@@ -81,9 +81,9 @@ class Character1 extends Character {
 
   }
 
-  override def heal() : Unit = {
-    this.currentHP = this.currentHP + 3
-    this.currentMP = this.currentMP + 1
+  override def heal(C1: Character) : Unit = {
+    C1.currentHP = C1.currentHP + 3
+    C1.currentMP = C1.currentMP + 1
   }
 
   override def castSpell(C1: Character) : Unit = {
@@ -123,7 +123,7 @@ class Character1 extends Character {
       this.castSpell(C1)
     }
     if(battle == actionList(3)){
-      this.heal()
+      this.heal(C1)
     }
     if(!actionList.contains(battle)){
 

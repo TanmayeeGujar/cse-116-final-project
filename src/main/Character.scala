@@ -33,15 +33,15 @@ abstract class Character {
     }
 
   }
-  def takeMagicDamage(x: Int): Boolean = {
+  def takeMagicDamage(x: Int): Unit = {
     currentMP = currentMP - x
-    if(currentMP <= 0){
-      currentMP = 0
-      DOA = false
-      false
-    }
-    else{DOA = true
-    true}
+//    if(currentMP <= 0){
+//      currentMP = 0
+//      DOA = false
+//      false
+//    }
+//    else{DOA = true
+//    true}
   }
   def dealMagicAttack(C2: Character): AnyVal={
     val damageMA = this.magic_attack - C2.magic_defense
@@ -77,18 +77,18 @@ abstract class Character {
     }
   }
 
-  def heal() : Unit = {
-    this.currentHP = this.currentHP + 5
-    this.currentMP = this.currentMP + 2
+  def heal(C1: Character) : Unit = {
+    C1.currentHP = C1.maxHP
+//    this.currentMP = this.currentMP + 2
   }
 
   def castSpell(C1: Character) : Unit = {
-    var SpellCount = 0
-    while(SpellCount !=2) {
-      C1.magic_attack = C1.magic_attack -2
-      SpellCount = SpellCount +1
-
-    }
+//    var SpellCount = 0
+//    while(SpellCount !=2) {
+      C1.magic_attack = (C1.magic_attack /2).ceil.toInt
+//      SpellCount = SpellCount +1
+//
+//    }
   }
 
   def battleOptions() = {

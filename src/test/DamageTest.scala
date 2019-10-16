@@ -18,7 +18,7 @@ class DamageTest extends FunSuite {
   }
   test("Character 2 initial stats"){
     val C1: Character = new Character2
-    assert(C1.level == 2, "wrong level")
+    assert(C1.level == 3, "wrong level")
     assert(C1.attack_power == 10, "MP wrong")
     assert(C1.magic_attack == 0, "HP wrong")
     //    assert(C1.magic_defense == 6, "wrong power")
@@ -40,7 +40,7 @@ class DamageTest extends FunSuite {
     C1.battleOptions()
 //    assert(C1.level == 1, "wrong level")
 //    assert(C1.currentMP == 20, "MP wrong")
-    assert(C1.BattleOptions == List("Physical Attack", "Magic Attack"), "wrong bO")
+    assert(C1.BattleOptions == List("Physical Attack", "Magic Attack", "Spell"), "wrong bO")
     //    assert(C1.magic_defense == 6, "wrong power")
     //    assert(C1.attack_power == 6, "wrong power")
     //    assert(C1.attack_power == 6, "wrong power")

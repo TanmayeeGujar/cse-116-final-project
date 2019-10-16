@@ -10,7 +10,7 @@ class Character2 extends Character {
   maxMP = 10
   currentMP = maxMP
   experience = 0
-  level = 2
+  level = 3
   DOA = true
   BattleOptions = List()
 
@@ -33,15 +33,15 @@ class Character2 extends Character {
 
   }
 
-  override def takeMagicDamage(x: Int): Boolean = {
+  override def takeMagicDamage(x: Int): Unit = {
     currentMP = currentMP - x
     if(currentMP <= 0){
       currentMP = 0
-      DOA = false
-      false
+//      DOA = false
+//      false
     }
-    else{DOA = true
-      true}
+//    else{DOA = true
+//      true}
   }
 
   override def dealMagicAttack(C2: Character): AnyVal = {
@@ -79,9 +79,9 @@ class Character2 extends Character {
     }
   }
 
-  override def heal() : Unit = {
-    this.currentHP = this.currentHP + 5
-    this.currentMP = this.currentMP + 2
+  override def heal(C1: Character) : Unit = {
+    C1.currentHP = C1.currentHP + 5
+    C1.currentMP = C1.currentMP + 2
   }
 
   override def castSpell(C1: Character) : Unit = {
@@ -97,7 +97,7 @@ class Character2 extends Character {
     var battle2 : String = "Magic Attack"
     var battle3 : String = "Spell"
     var battle4 : String = "Heal"
-    if(this.level < 3){
+    if(this.level <= 2){
       BattleOptions = List(battle1, battle2)}
 
     else if(this.level >=2 && this.level <4){
@@ -119,7 +119,7 @@ class Character2 extends Character {
       this.castSpell(C1)
     }
     if(battle == actionList(3)){
-      this.heal()
+      this.heal(C1)
     }
     if(!actionList.contains(battle)){
 
