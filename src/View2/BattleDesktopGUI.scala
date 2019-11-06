@@ -84,9 +84,9 @@ object BattleDesktopGUI extends JFXApp{
   }
 
   /** Uncomment this to demo that def createJson() returns the correct Json string */
-//  override def main(args: Array[String]): Unit = {
-//    println(createJSON())
-//  }
+  override def main(args: Array[String]): Unit = {
+    println(createJSON())
+  }
 
   val JSstr = createJSON()
   var lastUpdateTime = System.nanoTime()
